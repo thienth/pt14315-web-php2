@@ -1,7 +1,7 @@
 <?php 
-
 require_once './controllers/HomeController.php';
 require_once './controllers/ProductController.php';
+
 $url = isset($_GET['url']) == true ? $_GET['url'] : '/';
 
 switch ($url) {
@@ -20,6 +20,10 @@ switch ($url) {
 	case 'san-pham':
 		$ctr = new ProductController();
 		$ctr->index();
+		break;
+	case 'chi-tiet-san-pham':
+		$ctr = new ProductController();
+		$ctr->detail();
 		break;
 	default:
 		# code...
