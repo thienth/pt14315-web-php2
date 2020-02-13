@@ -1,13 +1,13 @@
 <?php 
-/**
- * 
- */
+require_once './models/Product.php';
 class ProductController
 {
 	
 	public function index()
 	{
-		echo "danh sach san pham";
+		$products = Product::getAll();
+
+		include_once './views/home/list-product.php';
 	}
 
 	public function detail(){

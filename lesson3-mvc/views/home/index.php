@@ -7,8 +7,9 @@
     <title>Homepage</title>
    
 </head>
-<body>
-    
+<body>  
+    <a href="san-pham">Danh sách sản phẩm</a>
+    <br>
     <ul>
         <?php foreach($users as $user): ?>
             <li><?php echo $user->name; ?></li>
