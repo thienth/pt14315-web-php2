@@ -1,8 +1,11 @@
 <?php 
+require_once './models/User.php';
 class HomeController{
 
 	public function index(){
-		echo "Day la trang chu";
+		$users = User::getAll();
+		
+		include_once './views/home/index.php';
 	}
 
 	public function about(){
