@@ -31,6 +31,15 @@ class ProductController
 	    $cates = Category::getAll();
 	    include_once './views/home/add-product.php';
     }
+
+    public function saveProduct(){
+	    $data = $_POST;
+	    $model = new Product();
+        $model->fill($data);
+        $model->insert();
+        header("location: " . BASE_URL . "san-pham?msg=Thêm sản phẩm thành công");
+        die;
+    }
 }
 
 
