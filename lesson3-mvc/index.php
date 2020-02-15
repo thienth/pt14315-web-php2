@@ -26,6 +26,10 @@ switch ($url) {
 		$ctr = new ProductController();
 		$ctr->remove();
 		break;
+	case 'add-product':
+		$ctr = new ProductController();
+		$ctr->addForm();
+		break;
 	case 'chi-tiet-san-pham':
 		$ctr = new ProductController();
 		$ctr->detail();

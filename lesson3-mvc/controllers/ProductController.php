@@ -1,5 +1,6 @@
 <?php 
 require_once './models/Product.php';
+require_once './models/Category.php';
 class ProductController
 {
 	
@@ -24,6 +25,11 @@ class ProductController
         $msg = Product::destroy($proId) == true ? "Xóa thành công!" : "Xóa không thành công!";
         // điều hướng website về danh sách sản phẩm
         header("location: " . BASE_URL . "san-pham?msg=$msg");
+    }
+
+    public function addForm(){
+	    $cates = Category::getAll();
+	    include_once './views/home/add-product.php';
     }
 }
 
