@@ -1,4 +1,5 @@
-<?php 
+<?php
+require_once './commons/utils.php';
 require_once './controllers/HomeController.php';
 require_once './controllers/ProductController.php';
 
@@ -20,6 +21,10 @@ switch ($url) {
 	case 'san-pham':
 		$ctr = new ProductController();
 		$ctr->index();
+		break;
+	case 'remove-product':
+		$ctr = new ProductController();
+		$ctr->remove();
 		break;
 	case 'chi-tiet-san-pham':
 		$ctr = new ProductController();
