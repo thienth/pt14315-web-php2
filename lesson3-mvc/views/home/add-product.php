@@ -19,7 +19,7 @@
 </head>
 <body>
     <div class="container product-form">
-        <form action="<?php echo BASE_URL . 'save-product'?>" method="post" enctype="multipart/form-data">
+        <form id="add-product-form" action="<?php echo BASE_URL . 'save-product'?>" method="post" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-6">
                     <div class="form-group">
@@ -75,6 +75,8 @@
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.min.js"></script>
     <script>
         function encodeImageFileAsURL(element) {
             var file = element.files[0];
@@ -90,6 +92,28 @@
                 reader.readAsDataURL(file);
             }
         }
+        $('#add-product-form').validate({
+            rules:{
+                name: {
+                    required: true,
+                    rangelength: [4, 20]
+                },
+                price: {
+                    required: true,
+                    min: 1
+                }
+            },
+            messages:{
+                name: {
+                    required: 'Vui lòng nhập tên sản phẩm',
+                    rangelength: "Tên sản phẩm nằm trong khoảng 4-20 ký tự"
+                },
+                price: {
+                    required: 'Vui lòng nhập giá sản phẩm',
+                    min: "Giá sản phẩm ít nhất bằng 1"
+                }
+            }
+        });
     </script>
 </body>
 </html>
