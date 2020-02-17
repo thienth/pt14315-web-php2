@@ -54,9 +54,9 @@ class ProductController
         $sql = "select * from products where name = '$name'";
         $result = Product::customQuery($sql, false);
         if($result == null){
-            echo json_encode(["result" => true]);
+            echo json_encode("true");
         }else{
-            echo json_encode(["result" => false]);
+            echo "false";
         }
     }
 }
