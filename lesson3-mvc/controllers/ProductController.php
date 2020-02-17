@@ -50,8 +50,6 @@ class ProductController
         }else{
             echo json_encode(["result" => false]);
         }
-
-
     }
 }
 
