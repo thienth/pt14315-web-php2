@@ -49,12 +49,14 @@
                 </div>
 
                 <div class="col-6">
-                    <div class="preview-img">
-
+                    <div class="preview-img row">
+                        <div class="col-8 offset-2">
+                            <img class="img-preview img-fluid" src="<?= BASE_URL . 'public/images/default-img.jpg'?>" alt="">
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="">Ảnh sản phẩm</label>
-                        <input type="file" name="image" class="form-control">
+                        <input onchange="encodeImageFileAsURL(this)" type="file" name="image" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="">Chi tiết sản phẩm</label>
@@ -73,5 +75,21 @@
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script>
+        function encodeImageFileAsURL(element) {
+            var file = element.files[0];
+            if(file === undefined){
+                $(".preview-img img").attr('src', "<?= BASE_URL . 'public/images/default-img.jpg'?>");
+            }else{
+                var reader = new FileReader();
+                reader.onloadend = function() {
+                    if(reader.result){
+                        $(".preview-img img").attr('src', reader.result);
+                    }
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
 </body>
 </html>
