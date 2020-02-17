@@ -32,6 +32,14 @@ class ProductController
 	    include_once './views/home/add-product.php';
     }
 
+    public function editForm(){
+	    $id = $_GET['id'];
+	    $model = Product::findOne($id);
+	    $cates = Category::getAll();
+
+	    include_once './views/home/edit-product.php';
+    }
+
     public function saveProduct(){
 	    $data = $_POST;
 	    $model = new Product();
