@@ -78,6 +78,21 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.min.js"></script>
     <script>
+
+        //jQuery.validator.addMethod("checkProductName", function(value, element) {
+        //    var proName = element.value;
+        //    var requestUrl = "<?//= BASE_URL . 'check-product-existed?name='?>//" + proName;
+        //    var resultData = true;
+        //    fetch(requestUrl)
+        //        .then((response) => {
+        //            return response.json();
+        //        })
+        //        .then((result) => {
+        //            resultData = result;
+        //        });
+        //    return resultData;
+        //
+        //}, "demo error text");
         function encodeImageFileAsURL(element) {
             var file = element.files[0];
             if(file === undefined){
@@ -92,11 +107,24 @@
                 reader.readAsDataURL(file);
             }
         }
+
+        // tên sp: phải nhập
+        // độ dài tối đa = 50
+
+        // giá: phải nhập
+        // giá tối thiểu: 1
+        // lượt views: o bắt buộc nhập
+        // nếu nhập thì phải là số dương
+
+        // ảnh: bắt buộc nhập
+        // định dạng ảnh (chỉ cho phép nhập các file đuôi jpg, png, jpeg, gif)
         $('#add-product-form').validate({
             rules:{
                 name: {
+                    // checkProductName: true,
                     required: true,
-                    rangelength: [4, 20]
+                    rangelength: [4, 20],
+
                 },
                 price: {
                     required: true,

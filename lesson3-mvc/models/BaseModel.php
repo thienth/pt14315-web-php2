@@ -19,6 +19,19 @@ class BaseModel{
         return $data;
     }
 
+    public static function customQuery($sql, $fetchAll = false){
+        $model = new static();
+
+        $stmt = $model->connect->prepare($sql);
+        $stmt->execute();
+        $data = $stmt->fetchAll(PDO::FETCH_CLASS, get_class($model));
+        if($fetchAll){
+            return $data;
+        }
+        return $data[0];
+    }
+
+
     public static function destroy($id){
         try{
             $model = new static();

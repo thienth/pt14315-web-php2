@@ -40,6 +40,19 @@ class ProductController
         header("location: " . BASE_URL . "san-pham?msg=Thêm sản phẩm thành công");
         die;
     }
+
+    public function checkName(){
+	    $name = $_GET['name'];
+        $sql = "select * from products where name = '$name'";
+        $result = Product::customQuery($sql, false);
+        if($result == null){
+            echo json_encode(["result" => true]);
+        }else{
+            echo json_encode(["result" => false]);
+        }
+
+
+    }
 }
 
 

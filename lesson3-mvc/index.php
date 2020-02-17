@@ -38,6 +38,10 @@ switch ($url) {
 		$ctr = new ProductController();
 		$ctr->detail();
 		break;
+	case 'check-product-existed':
+		$ctr = new ProductController();
+		$ctr->checkName();
+		break;
 	default:
 		# code...
 		break;
