@@ -1,5 +1,6 @@
-<?php 
-require_once './models/User.php';
+<?php
+namespace Controllers;
+use Models\User;
 class HomeController{
 
 	public function index(){

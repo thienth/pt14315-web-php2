@@ -1,6 +1,7 @@
 <?php 
-require_once './models/Product.php';
-require_once './models/Category.php';
+namespace  Controllers;
+use Models\Category;
+use Models\Product;
 class ProductController
 {
 	
