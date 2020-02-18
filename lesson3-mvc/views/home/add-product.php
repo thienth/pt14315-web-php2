@@ -15,6 +15,9 @@
         .product-form{
             margin-top: 50px;
         }
+        .form-group label.error{
+            color: indianred;
+        }
     </style>
 </head>
 <body>
@@ -79,20 +82,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/additional-methods.min.js"></script>
     <script>
 
-        //jQuery.validator.addMethod("checkProductName", function(value, element) {
-        //    var proName = element.value;
-        //    var requestUrl = "<?//= BASE_URL . 'check-product-existed?name='?>//" + proName;
-        //    var resultData = true;
-        //    fetch(requestUrl)
-        //        .then((response) => {
-        //            return response.json();
-        //        })
-        //        .then((result) => {
-        //            resultData = result;
-        //        });
-        //    return resultData;
-        //
-        //}, "demo error text");
         function encodeImageFileAsURL(element) {
             var file = element.files[0];
             if(file === undefined){
@@ -125,14 +114,15 @@
                     required: true,
                     rangelength: [4, 20],
                     remote: {
-                        url: "<?= BASE_URL . 'check-product-existed' ?>",
-                        type: "get",
-                        dataType: "jsonp",
-                        data: {
-                            name:  function(){
-                                return $("[name='name']").val()
+                        url: "<?= BASE_URL . 'check-product-existed'?>",
+                        type: "post",
+                        data:
+                            {
+                                name: function()
+                                {
+                                    return $('#add-product-form :input[name="name"]').val();
+                                }
                             }
-                        }
                     }
                 },
                 price: {

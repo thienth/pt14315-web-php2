@@ -132,8 +132,8 @@
                     rangelength: [4, 20],
                     remote: {
                         url: "<?= BASE_URL . 'check-product-existed' ?>",
-                        type: "get",
-                        dataType: "jsonp",
+                        type: "post",
+                        dataType: "json",
                         data: {
                             name:  function(){
                                 return $("[name='name']").val()

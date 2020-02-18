@@ -50,11 +50,11 @@ class ProductController
     }
 
     public function checkName(){
-	    $name = $_GET['name'];
+	    $name = $_POST['name'];
         $sql = "select * from products where name = '$name'";
         $result = Product::customQuery($sql, false);
         if($result == null){
-            echo json_encode("true");
+            echo "true";
         }else{
             echo "false";
         }
