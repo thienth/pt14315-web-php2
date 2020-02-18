@@ -44,6 +44,8 @@ class ProductController
 	    $data = $_POST;
 	    $model = new Product();
         $model->fill($data);
+        // nhận ảnh upload lên từ trình duyệt
+        $model->image  = customUploadFile($_FILES['image']);
         $model->insert();
         header("location: " . BASE_URL . "san-pham?msg=Thêm sản phẩm thành công");
         die;

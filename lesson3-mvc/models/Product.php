@@ -16,10 +16,11 @@ class Product extends BaseModel{
     public function insert(){
         try{
             $insertQuery = "insert into " . $this->table
-                . " (name, cate_id, price, short_desc, detail, views) "
+                . " (name, cate_id, price, short_desc, detail, views, image) "
                 . " values "
                 . " ('$this->name', '$this->cate_id', '$this->price', 
-                            '$this->short_desc', '$this->detail', '$this->views' )";
+                            '$this->short_desc', '$this->detail', '$this->views',
+                             '$this->image')";
             $stmt = $this->connect->prepare($insertQuery);
             $stmt->execute();
             return true;
