@@ -42,7 +42,6 @@ class BaseModel{
         return $data[0];
     }
 
-
     public static function destroy($id){
         try{
             $model = new static();

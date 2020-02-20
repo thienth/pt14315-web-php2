@@ -1,12 +1,8 @@
 <?php
 require_once './commons/utils.php';
 
-require_once './models/BaseModel.php';
-require_once './models/Category.php';
-require_once './models/Product.php';
-require_once './models/User.php';
-require_once './controllers/HomeController.php';
-require_once './controllers/ProductController.php';
+require_once './vendor/autoload.php';
+
 
 use Controllers\HomeController;
 use Controllers\ProductController;
