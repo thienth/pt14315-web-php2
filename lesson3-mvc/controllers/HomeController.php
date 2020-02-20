@@ -1,12 +1,13 @@
 <?php
 namespace Controllers;
 use Models\User;
-class HomeController{
+class HomeController extends BaseController {
 
 	public function index(){
 		$users = User::getAll();
 		
-		include_once './views/home/index.php';
+//		include_once './views/home/index.php';
+        $this->render('home.index', compact('users'));
 	}
 
 	public function about(){

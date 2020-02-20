@@ -11,9 +11,9 @@
     <a href="san-pham">Danh sách sản phẩm</a>
     <br>
     <ul>
-        <?php foreach($users as $user): ?>
-            <li><?php echo $user->name; ?></li>
-        <?php endforeach;?>
+        @foreach($users as $user)
+            <li>{{$user->name}}</li>
+        @endforeach
     </ul>
 </body>
 </html>

@@ -2,14 +2,14 @@
 namespace  Controllers;
 use Models\Category;
 use Models\Product;
-class ProductController
+class ProductController extends BaseController
 {
 	
 	public function index()
 	{
 		$products = Product::getAll();
-
-		include_once './views/home/list-product.php';
+        $this->render('product.index', compact('products'));
+//		include_once './views/home/list-product.php';
 	}
 
 	public function detail(){
