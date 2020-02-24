@@ -1,7 +1,8 @@
 <?php 
-namespace  Controllers;
+namespace Controllers;
 use Models\Category;
 use Models\Product;
+
 class ProductController extends BaseController
 {
 	
