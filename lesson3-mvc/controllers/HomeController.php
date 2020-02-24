@@ -5,7 +5,7 @@ class HomeController extends BaseController {
 
 	public function index(){
 
-	    $this->render('home.list');
+	    $this->render('layouts.admin');
 //		$users = User::getAll();
 //
 ////		include_once './views/home/index.php';

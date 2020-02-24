@@ -1,6 +1,7 @@
 <?php
 
 define('BASE_URL', "http://localhost/pt14315-web/lesson3-mvc/");
+define('ADMIN_ASSET_URL', BASE_URL . "public/admin/");
 
 function dd($val){
     echo "<pre>";
