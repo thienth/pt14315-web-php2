@@ -11,15 +11,11 @@ class ProductController extends BaseController
 		$products = Product::getAll();
         $this->render('product.index', compact('products'));
 	}
-
-	public function detail(){
-		echo "day la trang chi tiet san pham";
-	}
 	public function remove(){
 	    // nhận tham số id trên đường dẫn
         $proId = isset($_GET['id']) == true ? $_GET['id'] : -1;
         if($proId < 0){
-            header('location: ' . BASE_URL . "san-pham");
+            header('location: ' . BASE_URL . "products");
             die;
         }
         // sử dụng model để thực hiện xóa dựa vào id với bảng products
@@ -37,8 +33,8 @@ class ProductController extends BaseController
 	    $id = $_GET['id'];
 	    $model = Product::findOne($id);
 	    $cates = Category::getAll();
-
-	    include_once './views/home/edit-product.php';
+        $this->render('product.edit-product', compact('model', 'cates'));
+//	    include_once './views/home/edit-product.php';
     }
 
     public function saveProduct(){
@@ -48,6 +44,18 @@ class ProductController extends BaseController
         // nhận ảnh upload lên từ trình duyệt
         $model->image  = customUploadFile($_FILES['image']);
         $model->insert();
+        header("location: " . BASE_URL . "products?msg=Thêm sản phẩm thành công");
+        die;
+    }
+
+    public function saveEditProduct(){
+	    $data = $_POST;
+	    $model = Product::findOne($data['id']);
+        $model->fill($data);
+        // nhận ảnh upload lên từ trình duyệt
+        $filename = customUploadFile($_FILES['image']);
+        $model->image  = $filename == null ? $model->image : $filename;
+        $model->update();
         header("location: " . BASE_URL . "products?msg=Thêm sản phẩm thành công");
         die;
     }

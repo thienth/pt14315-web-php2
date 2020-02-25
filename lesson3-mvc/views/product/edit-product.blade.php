@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', "Thêm sản phẩm")
+@section('title', 'Cập nhật thông tin sản phẩm')
 @section('content')
     <style>
         .preview-img{
@@ -9,44 +9,52 @@
         .product-form{
             margin-top: 50px;
         }
-        .form-group label.error{
-            color: indianred;
-        }
     </style>
 
-    <form id="add-product-form" action="{{BASE_URL . 'products/save-product'}}" method="post" enctype="multipart/form-data">
+    <form id="edit-product-form" action="{{BASE_URL . 'products/save-edit-product'}}" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="{{$model->id}}">
         <div class="row">
             <div class="col-6">
                 <div class="form-group">
                     <label for="">Tên sản phẩm</label>
-                    <input type="text" name="name" placeholder="Nhập tên sản phẩm" class="form-control">
+                    <input type="text" name="name" placeholder="Nhập tên sản phẩm"
+                           value="{{$model->name}}"
+                           class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="">Danh mục</label>
                     <select name="cate_id" class="form-control">
                         @foreach ($cates as $ca)
-                            <option value="{{$ca->id}}">{{$ca->cate_name}}</option>
+                            <option
+                                    @if($ca->id == $model->cate_id)
+                                        selected
+                                    @endif
+                                    value="{{$ca->id}}">{{$ca->cate_name}}</option>
                         @endforeach
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="">Giá sản phẩm</label>
-                    <input type="number" name="price" placeholder="Nhập giá sản phẩm" class="form-control">
+                    <input type="number" name="price" placeholder="Nhập giá sản phẩm"
+                           value="{{$model->price}}}"
+                           class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="">Số lượng views</label>
-                    <input type="number" name="views" placeholder="Nhập số lượt xem sản phẩm" class="form-control">
+                    <input type="number" name="views" placeholder="Nhập số lượt xem sản phẩm"
+                           value="{{$model->views}}"
+                           class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="">Mô tả ngắn</label>
-                    <textarea name="short_desc" class="form-control" rows="5"></textarea>
+                    <textarea name="short_desc" class="form-control" rows="5">{!! $model->short_desc !!}</textarea>
                 </div>
             </div>
 
             <div class="col-6">
                 <div class="preview-img row">
                     <div class="col-8 offset-2">
-                        <img class="img-preview img-fluid" src="{{BASE_URL . 'public/images/default-img.jpg'}}" alt="">
+                        <img class="img-preview img-fluid" src="{{BASE_URL . $model->image}}" alt="">
                     </div>
                 </div>
                 <div class="form-group">
@@ -55,24 +63,22 @@
                 </div>
                 <div class="form-group">
                     <label for="">Chi tiết sản phẩm</label>
-                    <textarea name="detail" class="form-control" rows="10"></textarea>
+                    <textarea name="detail" class="form-control" rows="10">{!! $model->detail !!}</textarea>
                 </div>
             </div>
         </div>
         <div class="col-12 d-flex justify-content-end">
             <button class="btn btn-sm btn-primary" type="submit">Lưu</button>&nbsp;
-            <a href="<?php echo BASE_URL . 'products'?>" class="btn btn-sm btn-danger">Hủy</a>
+            <a href="{{ BASE_URL . 'products'}}" class="btn btn-sm btn-danger">Hủy</a>
         </div>
     </form>
-
 @endsection
 @section('js')
     <script>
-
         function encodeImageFileAsURL(element) {
             var file = element.files[0];
             if(file === undefined){
-                $(".preview-img img").attr('src', "{{BASE_URL . 'public/images/default-img.jpg'}}");
+                $(".preview-img img").attr('src', "{{BASE_URL . $model->image}}");
             }else{
                 var reader = new FileReader();
                 reader.onloadend = function() {
@@ -94,7 +100,7 @@
 
         // ảnh: bắt buộc nhập
         // định dạng ảnh (chỉ cho phép nhập các file đuôi jpg, png, jpeg, gif)
-        $('#add-product-form').validate({
+        $('#edit-product-form').validate({
             rules:{
                 name: {
                     // checkProductName: true,
@@ -103,13 +109,12 @@
                     remote: {
                         url: "{{BASE_URL . 'products/check-product-existed'}}",
                         type: "post",
-                        data:
-                            {
-                                name: function()
-                                {
-                                    return $('#add-product-form :input[name="name"]').val();
-                                }
+                        dataType: "json",
+                        data: {
+                            name:  function(){
+                                return $("[name='name']").val()
                             }
+                        }
                     }
                 },
                 price: {

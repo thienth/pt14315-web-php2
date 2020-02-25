@@ -42,11 +42,11 @@ switch ($url) {
 		$ctr = new ProductController();
 		$ctr->saveProduct();
 		break;
-	case 'chi-tiet-san-pham':
+	case 'products/save-edit-product':
 		$ctr = new ProductController();
-		$ctr->detail();
+		$ctr->saveEditProduct();
 		break;
-	case 'check-product-existed':
+	case 'products/check-product-existed':
 		$ctr = new ProductController();
 		$ctr->checkName();
 		break;

@@ -14,7 +14,7 @@
             <th>Price</th>
             <th>Star</th>
             <th>
-                <a href="{{BASE_URL . 'add-product'}}">Thêm</a>
+                <a class="btn btn-success btn-sm" href="{{BASE_URL . 'products/add'}}"><i class="fas fa-plus"></i> Thêm</a>
             </th>
             </thead>
             <tbody>
@@ -28,8 +28,12 @@
                 <td>{{$pro->price}}</td>
                 <td>{{$pro->star}}</td>
                 <td>
-                    <a href="{{BASE_URL . 'products/edit-product?id=' . $pro->id}}">Sửa</a>
-                    <a href="{{BASE_URL . 'products/remove-product?id=' . $pro->id}}">Xóa</a>
+                    <a class="btn btn-sm btn-info" href="{{BASE_URL . 'products/edit-product?id=' . $pro->id}}">
+                        <i class="fas fa-pencil-alt"></i>
+                    </a>
+                    <a class="btn btn-sm btn-danger" href="{{BASE_URL . 'products/remove-product?id=' . $pro->id}}">
+                        <i class="fas fa-trash-alt"></i>
+                    </a>
                 </td>
             </tr>
             @endforeach

@@ -1,5 +1,6 @@
 <?php
 namespace Models;
+use Exception;
 class Product extends BaseModel{
     protected $table = "products";
 
@@ -21,7 +22,28 @@ class Product extends BaseModel{
                 . " ('$this->name', '$this->cate_id', '$this->price', 
                             '$this->short_desc', '$this->detail', '$this->views',
                              '$this->image')";
+//            dd($insertQuery);
             $stmt = $this->connect->prepare($insertQuery);
+            $stmt->execute();
+            return true;
+        }catch (Exception $ex){
+            var_dump($ex->getMessage());
+            return false;
+        }
+    }
+    public function update(){
+        try{
+            $updateQuery = "update " . $this->table
+                . " set
+                        name = '$this->name', 
+                        cate_id = '$this->cate_id', 
+                        price = '$this->price', 
+                        short_desc = '$this->short_desc', 
+                        detail = '$this->detail', 
+                        views = '$this->views', 
+                        image = '$this->image' 
+                    where id = $this->id";
+            $stmt = $this->connect->prepare($updateQuery);
             $stmt->execute();
             return true;
         }catch (Exception $ex){
