@@ -22,7 +22,7 @@ switch ($url) {
 		$ctr = new HomeController();
 		$ctr->contact();
 		break;
-	case 'san-pham':
+	case 'products':
 		$ctr = new ProductController();
 		$ctr->index();
 		break;
@@ -30,7 +30,7 @@ switch ($url) {
 		$ctr = new ProductController();
 		$ctr->remove();
 		break;
-	case 'add-product':
+	case 'products/add':
 		$ctr = new ProductController();
 		$ctr->addForm();
 		break;

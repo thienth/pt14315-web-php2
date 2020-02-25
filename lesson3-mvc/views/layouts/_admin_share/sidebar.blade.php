@@ -89,13 +89,13 @@
                         <li class="nav-item">
                             <a href="{{BASE_URL . 'products'}}" class="nav-link">
                                 <i class="fa fa-list-ol"></i>
-                                <p>Danh sách danh mục</p>
+                                <p>Danh sách sản phẩm</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="{{BASE_URL . 'products/add'}}" class="nav-link">
                                 <i class="fa fa-plus"></i>
-                                <p>Tạo danh mục</p>
+                                <p>Tạo sản phẩm</p>
                             </a>
                         </li>
                     </ul>

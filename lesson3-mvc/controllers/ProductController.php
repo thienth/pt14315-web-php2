@@ -10,7 +10,6 @@ class ProductController extends BaseController
 	{
 		$products = Product::getAll();
         $this->render('product.index', compact('products'));
-//		include_once './views/home/list-product.php';
 	}
 
 	public function detail(){
@@ -31,7 +30,7 @@ class ProductController extends BaseController
 
     public function addForm(){
 	    $cates = Category::getAll();
-	    include_once './views/home/add-product.php';
+	    $this->render('product.add-product', compact('cates'));
     }
 
     public function editForm(){
