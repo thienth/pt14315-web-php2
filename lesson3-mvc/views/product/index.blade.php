@@ -28,8 +28,8 @@
                 <td>{{$pro->price}}</td>
                 <td>{{$pro->star}}</td>
                 <td>
-                    <a href="{{BASE_URL . 'edit-product?id=' . $pro->id}}">Sửa</a>
-                    <a href="{{BASE_URL . 'remove-product?id=' . $pro->id}}">Xóa</a>
+                    <a href="{{BASE_URL . 'products/edit-product?id=' . $pro->id}}">Sửa</a>
+                    <a href="{{BASE_URL . 'products/remove-product?id=' . $pro->id}}">Xóa</a>
                 </td>
             </tr>
             @endforeach

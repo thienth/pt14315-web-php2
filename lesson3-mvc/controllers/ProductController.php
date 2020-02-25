@@ -25,7 +25,7 @@ class ProductController extends BaseController
         // sử dụng model để thực hiện xóa dựa vào id với bảng products
         $msg = Product::destroy($proId) == true ? "Xóa thành công!" : "Xóa không thành công!";
         // điều hướng website về danh sách sản phẩm
-        header("location: " . BASE_URL . "san-pham?msg=$msg");
+        header("location: " . BASE_URL . "products?msg=$msg");
     }
 
     public function addForm(){
@@ -48,7 +48,7 @@ class ProductController extends BaseController
         // nhận ảnh upload lên từ trình duyệt
         $model->image  = customUploadFile($_FILES['image']);
         $model->insert();
-        header("location: " . BASE_URL . "san-pham?msg=Thêm sản phẩm thành công");
+        header("location: " . BASE_URL . "products?msg=Thêm sản phẩm thành công");
         die;
     }
 

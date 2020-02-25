@@ -14,7 +14,7 @@
         }
     </style>
 
-    <form id="add-product-form" action="<?php echo BASE_URL . 'save-product'?>" method="post" enctype="multipart/form-data">
+    <form id="add-product-form" action="<?php echo BASE_URL . 'products/save-product'?>" method="post" enctype="multipart/form-data">
         <div class="row">
             <div class="col-6">
                 <div class="form-group">

@@ -26,7 +26,7 @@ switch ($url) {
 		$ctr = new ProductController();
 		$ctr->index();
 		break;
-	case 'remove-product':
+	case 'products/remove-product':
 		$ctr = new ProductController();
 		$ctr->remove();
 		break;
@@ -34,11 +34,11 @@ switch ($url) {
 		$ctr = new ProductController();
 		$ctr->addForm();
 		break;
-	case 'edit-product':
+	case 'products/edit-product':
 		$ctr = new ProductController();
 		$ctr->editForm();
 		break;
-	case 'save-product':
+	case 'products/save-product':
 		$ctr = new ProductController();
 		$ctr->saveProduct();
 		break;
