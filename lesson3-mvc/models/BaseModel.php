@@ -36,10 +36,15 @@ class BaseModel{
         $stmt = $model->connect->prepare($sql);
         $stmt->execute();
         $data = $stmt->fetchAll(PDO::FETCH_CLASS, get_class($model));
-        if($fetchAll){
-            return $data;
+        if(count($data)){
+            if($fetchAll){
+                return $data;
+            }else{
+                return $data[0];
+            }
         }
-        return $data[0];
+
+        return false;
     }
 
     public static function destroy($id){
