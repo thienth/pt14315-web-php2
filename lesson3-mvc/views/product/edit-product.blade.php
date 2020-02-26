@@ -113,6 +113,9 @@
                         data: {
                             name:  function(){
                                 return $("[name='name']").val()
+                            },
+                            id: function () {
+                                return $("[name='id']").val()
                             }
                         }
                     }

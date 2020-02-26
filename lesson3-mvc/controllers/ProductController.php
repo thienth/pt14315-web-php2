@@ -62,7 +62,15 @@ class ProductController extends BaseController
 
     public function checkName(){
 	    $name = $_POST['name'];
+
         $sql = "select * from products where name = '$name'";
+
+        // phục vụ cho màn hình update, kiểm tra tên với những sản phẩm khác id gửi lên
+        $id = isset($_POST['id']) ? $_POST['id'] : false;
+        if($id != false){
+            $sql .= " and id != $id";
+        }
+
         $result = Product::customQuery($sql, false);
         if($result == null){
             echo "true";
