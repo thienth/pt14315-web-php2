@@ -1,8 +1,7 @@
 <?php
 require_once './commons/utils.php';
-
 require_once './vendor/autoload.php';
-
+require_once './commons/database.php';
 
 use Controllers\HomeController;
 use Controllers\ProductController;

@@ -10,7 +10,7 @@
     "require": {
         "jenssegers/blade": "^1.2",
         "phroute/phroute": "^2.1",
-        "jenssegers/model": "^1.2"
+        "illuminate/database": "*"
     },
     "autoload": {
         "psr-4": {

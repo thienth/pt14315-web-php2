@@ -10,6 +10,7 @@
             <thead>
             <th>ID</th>
             <th>Name</th>
+            <th>Category</th>
             <th width="100">Image</th>
             <th>Price</th>
             <th>Star</th>
@@ -22,6 +23,7 @@
             <tr>
                 <td>{{$pro->id}}</td>
                 <td>{{$pro->name}}</td>
+                <td>{{$pro->getCategoryName()}}</td>
                 <td>
                     <img src="{{BASE_URL . $pro->image}}" class="img-thumbnail">
                 </td>
